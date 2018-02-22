@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.pruebasfirebase.ActivityParte2">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="En este ejercicio muestra la informcion de varios jugadores en función de los nodos que contenga la"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:textSize="18dp"
+
+          />
+
+    <TextView
+        android:id="@+id/tvJugadores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp" />
+</LinearLayout>
