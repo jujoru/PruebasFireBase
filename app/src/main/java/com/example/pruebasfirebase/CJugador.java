@@ -8,6 +8,8 @@ public class CJugador {
 
     String nombre;
     int dorsal;
+
+
     String posicion;
     double sueldo;
 
@@ -51,5 +53,16 @@ public class CJugador {
 
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
+    }
+
+
+    @Override
+    public String toString() {
+        return "CJugador{" +
+                "nombre='" + nombre + '\'' +
+                ", dorsal=" + dorsal +
+                ", posicion='" + posicion + '\'' +
+                ", sueldo=" + sueldo +
+                '}';
     }
 }

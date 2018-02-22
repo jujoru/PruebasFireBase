@@ -25,4 +25,9 @@
         android:gravity="center"
         android:text="TextView"
         android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/lvJugadores"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
