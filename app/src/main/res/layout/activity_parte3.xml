@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.pruebasfirebase.ActivityParte3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spJugadores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="6" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:drawable/ic_search_category_default"
+            android:onClick="buscar"
+             />
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etNombre"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etDorsal"
+        android:ems="10"
+        android:hint="Dorsal"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/etPosicion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+        android:hint="Posicion"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etSueldo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Sueldo"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="guardar"
+        android:text="Guardar" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="modificar"
+        android:text="Modificar" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="eliminar"
+        android:background="@color/colorAccent"
+        android:text="Eliminar" />
+</LinearLayout>

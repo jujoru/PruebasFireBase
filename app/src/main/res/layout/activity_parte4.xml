@@ -5,33 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.pruebasfirebase.MainActivity">
+    tools:context="com.example.pruebasfirebase.ActivityParte4">
 
-
-    <Button
-        android:id="@+id/button"
+    <ImageView
+        android:id="@+id/ivCargar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="parte1"
-        android:text="Parte 1: Mostrar un jugador" />
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="parte2"
-        android:text="Parte 2: Mostrar en ListView" />
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="parte3"
-        android:text="Parte 3: Insertar, Modificar, Borrar" />
+        android:onClick="hacerFoto"
+        android:text="Hacer foto" />
 
     <Button
-        android:id="@+id/button5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="parte4"
-        android:text="Parte 4: Almacenamiento" />
+        android:onClick="abrirGaleria"
+        android:text="Abrir Galeria" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary"
+        android:onClick="subirFoto"
+        android:text="Guardar" />
 </LinearLayout>

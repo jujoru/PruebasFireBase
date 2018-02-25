@@ -11,12 +11,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="En este ejemplo veremos como
-            cargar un solo jugador y como cambiará a tiempo real.
-Los botones nos permitirán"
-        android:gravity="center"
         android:layout_marginBottom="40dp"
-        android:textSize="18sp" />
+        android:gravity="center"
+        android:text="Cargar datos de un solo jugador"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvJugador"
