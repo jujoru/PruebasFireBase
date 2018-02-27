@@ -34,7 +34,7 @@ public class ActivityParte3 extends AppCompatActivity {
         etPosicion = (EditText)findViewById(R.id.etPosicion);
         etSueldo = (EditText)findViewById(R.id.etSueldo);
 
-        String [] jugadoresId = {"j1","j2","j3","j4","j5"};
+        String [] jugadoresId = {"j1","j2","j3","j4","j5","j6","j7"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_expandable_list_item_1,jugadoresId);
         spJugadores.setAdapter(adapter);
@@ -45,7 +45,6 @@ public class ActivityParte3 extends AppCompatActivity {
 
     public void buscar(View view){
         String idSeleccionada = spJugadores.getSelectedItem().toString();
-
 
         dbRef = FirebaseDatabase.getInstance().getReference()
                 .child("jugadores/"+idSeleccionada);
@@ -85,17 +84,19 @@ public class ActivityParte3 extends AppCompatActivity {
             dbRef = FirebaseDatabase.getInstance().getReference()
                     .child("jugadores");
 
-            //String nueva_clave = dbRef.push().setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
-             dbRef.child("j7").setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
 
+            //String nueva_clave = dbRef.push().setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
+             dbRef.child("j8").setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
                 public void onComplete(DatabaseError error, DatabaseReference ref) {
                     if(error == null) {
-
-                        Toast.makeText(getApplicationContext(), "INSERTADO CORRECTAMENTE", Toast.LENGTH_LONG).show();
-
+                        Toast.makeText(getApplicationContext(),
+                                "INSERTADO CORRECTAMENTE",
+                                Toast.LENGTH_LONG).show();
                         limpiarFormulario();
                     }else {
-                        Toast.makeText(getApplicationContext(), "NO SE PUEDE INSETAR EL JUGADOR", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),
+                                "NO SE PUEDE INSETAR EL JUGADOR",
+                                Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -115,43 +116,47 @@ public class ActivityParte3 extends AppCompatActivity {
             int dorsal = Integer.parseInt(strDorsal);
             double sueldo = Double.parseDouble(strSueldo);
             CJugador nuevoJugador=new CJugador(dorsal,nombre,posicion,sueldo);
-
-
             dbRef = FirebaseDatabase.getInstance().getReference()
                     .child("jugadores");
 
-            String claveJugador = spJugadores.getSelectedItem().toString();
+            String idSeleccionada = spJugadores.getSelectedItem().toString();
 
-
-            //String nueva_clave = dbRef.push().getKey();
-            //dbRef.push().setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
-            dbRef.child(claveJugador).setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
-
+            dbRef.child(idSeleccionada).setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
                 public void onComplete(DatabaseError error, DatabaseReference ref) {
                     if(error == null) {
-                        Toast.makeText(getApplicationContext(), "MODIFICADO CORRECTAMENTE", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),
+                                "INSERTADO CORRECTAMENTE",
+                                Toast.LENGTH_LONG).show();
                         limpiarFormulario();
                     }else {
-                        Toast.makeText(getApplicationContext(), "NO SE PUEDE INSETAR EL JUGADOR", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),
+                                "NO SE PUEDE INSETAR EL JUGADOR",
+                                Toast.LENGTH_LONG).show();
                     }
                 }
             });
 
         }
     }
+
     public void eliminar(View view){
         
         dbRef = FirebaseDatabase.getInstance().getReference()
                 .child("jugadores");
 
-        dbRef.child("j6").removeValue(new DatabaseReference.CompletionListener() {
+        String idSeleccionada = spJugadores.getSelectedItem().toString();
+        dbRef.child(idSeleccionada).removeValue(new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError error, DatabaseReference databaseReference) {
                 if(error == null) {
-                    Toast.makeText(getApplicationContext(), "ELIMINADO CORRECTAMENTE", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "ELIMINADO CORRECTAMENTE",
+                            Toast.LENGTH_LONG).show();
                     limpiarFormulario();
                 }else {
-                    Toast.makeText(getApplicationContext(), "NO SE PUEDE ELIMINAR EL JUGADOR", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "NO SE PUEDE ELIMINAR EL JUGADOR",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });

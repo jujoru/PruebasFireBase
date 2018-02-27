@@ -34,4 +34,11 @@
         android:layout_height="wrap_content"
         android:onClick="parte4"
         android:text="Parte 4: Almacenamiento" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ejercicioFinal"
+        android:text="EJERCICIO FINAL" />
 </LinearLayout>

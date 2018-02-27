@@ -32,4 +32,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void ejercicioFinal(View view){
+        Intent i=new Intent(getApplicationContext(),ActivityEjercicioFinalListView.class);
+        startActivity(i);
+    }
+
 }

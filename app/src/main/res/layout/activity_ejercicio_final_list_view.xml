@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.pruebasfirebase.ActivityEjercicioFinalListView">
+
+
+    <ListView
+        android:id="@+id/main_lvEmpleados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_weight="15" />
+
+    <Button
+        android:id="@+id/main_btnNuevoEmpleado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:onClick="accNuevoEmpleado"
+        android:text="Nuevo empleado" />
+
+</RelativeLayout>
+

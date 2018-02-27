@@ -46,7 +46,7 @@ public class ActivityParte2 extends AppCompatActivity {
     }
 
 
-
+    //desde
     private void cargarDatosFirebase(){
         dbRef = FirebaseDatabase.getInstance().getReference()
                 .child("jugadores");
@@ -65,20 +65,28 @@ public class ActivityParte2 extends AppCompatActivity {
             }
         };
         dbRef.addValueEventListener(valueEventListener);
+        //dbRef.addListenerForSingleValueEvent(valueEventListener);
     }
+    //hasta
 
-
+    //desde
     private void cargarListView (DataSnapshot dataSnapshot){
+
         lista_jugadores.add(dataSnapshot.getValue(CJugador.class));
-        AdaptadorJugador adapter = new AdaptadorJugador(getApplicationContext(), lista_jugadores);
+        AdaptadorJugador adapter = new AdaptadorJugador(getApplicationContext(),
+                lista_jugadores);
         lvJugadores.setAdapter(adapter);
 
         lvJugadores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CJugador cJugador = ((CJugador)parent.getItemAtPosition(position));
-                Toast.makeText(getApplicationContext(),"Seleccionado: "+cJugador.getNombre(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),
+                        "El sueldo de "+cJugador.getNombre()+" es de "+cJugador.getSueldo(),
+                        Toast.LENGTH_LONG).show();
             }
         });
+
     }
+    //Hasta
 }

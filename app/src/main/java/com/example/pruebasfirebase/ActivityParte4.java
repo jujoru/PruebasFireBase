@@ -39,8 +39,10 @@ public class ActivityParte4 extends AppCompatActivity {
         setContentView(R.layout.activity_parte4);
 
         ivCargar= (ImageView)findViewById(R.id.ivCargar);
-
         storageRf  = FirebaseStorage.getInstance().getReference();
+
+
+
     }
 
 
@@ -79,6 +81,23 @@ public class ActivityParte4 extends AppCompatActivity {
         }*/
     }
 
+    public void cargarURL(View view){
+        storageRf.child("images/campo.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Got the download URL for 'users/me/profile.png'
+
+
+                ivCargar.setImageURI(null);
+                ivCargar.setImageURI(uri);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+    }
     public void subirFoto(View view){
         if(filePath != null)
         {
@@ -87,6 +106,7 @@ public class ActivityParte4 extends AppCompatActivity {
             progressDialog.show();
 
             StorageReference ref = storageRf.child("images/"+ UUID.randomUUID().toString());
+
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override

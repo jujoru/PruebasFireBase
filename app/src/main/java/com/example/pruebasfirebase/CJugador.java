@@ -8,8 +8,6 @@ public class CJugador {
 
     String nombre;
     int dorsal;
-
-
     String posicion;
     double sueldo;
 

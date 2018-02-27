@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pruebasfirebase">
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -24,7 +26,9 @@
         <activity android:name=".ActivityParte1" />
         <activity android:name=".ActivityParte2" />
         <activity android:name=".ActivityParte3" />
-        <activity android:name=".ActivityParte4"></activity>
+        <activity android:name=".ActivityParte4" />
+        <activity android:name=".ActivityEjercicioFinalListView" />
+        <activity android:name=".ActivityEjercicioFinalFormulario"></activity>
     </application>
 
 </manifest>
