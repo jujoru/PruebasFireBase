@@ -41,18 +41,57 @@ public class ActivityEjercicioFinalFormulario extends AppCompatActivity {
             etProfesion.setText(empleado.getProfesion().toString());
 
             btnInsertar.setEnabled(false);
-
+            etDNI.setEnabled(false);
 
         } else {
 
             btnModificar.setEnabled(false);
-            etDNI.setEnabled(false);
+
         }
 
     }
 
     public void accInsertar(View view) {
-        /*
+
+            String nombre = etNombre.getText().toString();
+            String dni = etDNI.getText().toString();
+            String profesion = etProfesion.getText().toString();
+
+            if(nombre.equals("")||dni.equals("")||profesion.equals("")){
+                Toast.makeText(getApplicationContext(),"Rellena todos los campos",Toast.LENGTH_LONG).show();
+            }else{
+
+                CEmpleado nuevoJugador=new CEmpleado(nombre, dni, profesion);
+                dbRef = FirebaseDatabase.getInstance().getReference()
+                        .child("empleados");
+
+
+                //String nueva_clave = dbRef.push().setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
+                dbRef.child(dni).setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
+                    public void onComplete(DatabaseError error, DatabaseReference ref) {
+                        if(error == null) {
+                            Toast.makeText(getApplicationContext(),
+                                    "INSERTADO CORRECTAMENTE",
+                                    Toast.LENGTH_LONG).show();
+                            limpiarFormulario();
+                        }else {
+                            Toast.makeText(getApplicationContext(),
+                                    "NO SE PUEDE INSETAR EL JUGADOR",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+            }
+
+    }
+
+    private void limpiarFormulario(){
+        etNombre.setText("");
+        etDNI.setText("");
+        etProfesion.setText("");
+    }
+    public void accModificar(View view) {
         String nombre = etNombre.getText().toString();
         String dni = etDNI.getText().toString();
         String profesion = etProfesion.getText().toString();
@@ -60,38 +99,28 @@ public class ActivityEjercicioFinalFormulario extends AppCompatActivity {
         if(nombre.equals("")||dni.equals("")||profesion.equals("")){
             Toast.makeText(getApplicationContext(),"Rellena todos los campos",Toast.LENGTH_LONG).show();
         }else{
-            int dorsal = Integer.parseInt(strDorsal);
-            double sueldo = Double.parseDouble(strSueldo);
-            CJugador nuevoJugador=new CJugador(dorsal,nombre,posicion,sueldo);
-            dbRef = FirebaseDatabase.getInstance().getReference()
-                    .child("jugadores");
 
+            CEmpleado nuevoJugador=new CEmpleado(nombre, dni, profesion);
+            dbRef = FirebaseDatabase.getInstance().getReference()
+                    .child("empleados");
 
             //String nueva_clave = dbRef.push().setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
-            dbRef.child("j8").setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
+            dbRef.child(dni).setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
                 public void onComplete(DatabaseError error, DatabaseReference ref) {
                     if(error == null) {
                         Toast.makeText(getApplicationContext(),
-                                "INSERTADO CORRECTAMENTE",
+                                "MODIFICADO CORRECTAMENTE",
                                 Toast.LENGTH_LONG).show();
                         limpiarFormulario();
                     }else {
                         Toast.makeText(getApplicationContext(),
-                                "NO SE PUEDE INSETAR EL JUGADOR",
+                                "NO SE PUEDE MODIFICADO EL JUGADOR",
                                 Toast.LENGTH_LONG).show();
                     }
                 }
             });
 
         }
-
-*/
-    }
-
-    public void accModificar(View view) {
-//holitaaaa
-
-
     }
 
 }

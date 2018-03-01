@@ -84,8 +84,7 @@ public class ActivityParte3 extends AppCompatActivity {
             dbRef = FirebaseDatabase.getInstance().getReference()
                     .child("jugadores");
 
-
-            //String nueva_clave = dbRef.push().setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
+ //String nueva_clave = dbRef.push().setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
             dbRef.child("j8").setValue(nuevoJugador, new DatabaseReference.CompletionListener(){
                 public void onComplete(DatabaseError error, DatabaseReference ref) {
                     if(error == null) {

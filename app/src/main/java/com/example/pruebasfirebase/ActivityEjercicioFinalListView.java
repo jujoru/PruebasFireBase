@@ -2,6 +2,7 @@ package com.example.pruebasfirebase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -97,7 +98,13 @@ public class ActivityEjercicioFinalListView extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(getApplicationContext(), "Holis", Toast.LENGTH_SHORT).show();
+                CEmpleado empleado = ((CEmpleado) parent.getItemAtPosition(position));
+                Bundle b=new Bundle();
+                b.putString("DNI",empleado.getDni());
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                DialogConfirmacion dialogo = new DialogConfirmacion();
+                dialogo.setArguments(b);
+                dialogo.show(fragmentManager, "dialogConfirmacino");
 
                 return true;
             }
