@@ -46,7 +46,7 @@ public class ActivityParte2 extends AppCompatActivity {
     }
 
 
-    //desde
+
     private void cargarDatosFirebase(){
         dbRef = FirebaseDatabase.getInstance().getReference()
                 .child("jugadores");
@@ -67,9 +67,9 @@ public class ActivityParte2 extends AppCompatActivity {
         dbRef.addValueEventListener(valueEventListener);
         //dbRef.addListenerForSingleValueEvent(valueEventListener);
     }
-    //hasta
 
-    //desde
+
+
     private void cargarListView (DataSnapshot dataSnapshot){
 
         lista_jugadores.add(dataSnapshot.getValue(CJugador.class));
@@ -87,6 +87,13 @@ public class ActivityParte2 extends AppCompatActivity {
             }
         });
 
+        lvJugadores.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                return false;
+            }
+        });
+
     }
-    //Hasta
+
 }

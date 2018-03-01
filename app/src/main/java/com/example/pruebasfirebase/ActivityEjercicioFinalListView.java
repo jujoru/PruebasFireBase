@@ -3,10 +3,17 @@ package com.example.pruebasfirebase;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -17,17 +24,60 @@ public class ActivityEjercicioFinalListView extends AppCompatActivity {
     ListView lvEmpleados;
     ArrayList <CEmpleado> listaEmpleados = new  ArrayList<CEmpleado>();
 
+
+    DatabaseReference dbRef;
+    ValueEventListener valueEventListener;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ejercicio_final_list_view);
-
-        cargarDatos();
-
         lvEmpleados = (ListView) findViewById(R.id.main_lvEmpleados);
-        AdaptadorEmpleado adapterEmpleado = new AdaptadorEmpleado(this, listaEmpleados);
-        lvEmpleados.setAdapter(adapterEmpleado);
+        cargarDatosFirebase();
+
+
+
+    }
+
+    public void accNuevoEmpleado(View view) {
+
+        Intent i = new Intent(getApplicationContext(), ActivityEjercicioFinalFormulario.class);
+        startActivity(i);
+
+    }
+
+
+    private void cargarDatosFirebase(){
+        dbRef = FirebaseDatabase.getInstance().getReference()
+                .child("empleados");
+
+        valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listaEmpleados.clear();
+                for (DataSnapshot empleadosDataSnapshot: dataSnapshot.getChildren()) {
+                    cargarListView(empleadosDataSnapshot);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("ActivityParte2","DATABASE ERROR");
+            }
+        };
+        dbRef.addValueEventListener(valueEventListener);
+        //dbRef.addListenerForSingleValueEvent(valueEventListener);
+    }
+
+
+
+    private void cargarListView (DataSnapshot dataSnapshot){
+
+        listaEmpleados.add(dataSnapshot.getValue(CEmpleado.class));
+        AdaptadorEmpleado adapter = new AdaptadorEmpleado(getApplicationContext(),
+                listaEmpleados);
+        lvEmpleados.setAdapter(adapter);
+
 
         lvEmpleados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -52,27 +102,6 @@ public class ActivityEjercicioFinalListView extends AppCompatActivity {
                 return true;
             }
         });
-
-
-    }
-
-    public void accNuevoEmpleado(View view) {
-
-        Intent i = new Intent(getApplicationContext(), ActivityEjercicioFinalFormulario.class);
-        startActivity(i);
-
-    }
-
-    private void cargarDatos (){
-
-        listaEmpleados.add(new CEmpleado("Pepe", "333222111A", "Profesor"));
-        listaEmpleados.add(new CEmpleado("Juan", "999888444A", "Medico"));
-        listaEmpleados.add(new CEmpleado("Marta", "123321123j", "Administrativa"));
-        listaEmpleados.add(new CEmpleado("Carlos", "000999888f", "Cocinero"));
-        listaEmpleados.add(new CEmpleado("Marta", "123123999J", "Pintora"));
-        listaEmpleados.add(new CEmpleado("Pepe", "rwrgwr", "srignwr"));
-        listaEmpleados.add(new CEmpleado("Pepe", "rwrgwr", "srignwr"));
-        listaEmpleados.add(new CEmpleado("Pepe", "rwrgwr", "srignwr"));
 
     }
 
