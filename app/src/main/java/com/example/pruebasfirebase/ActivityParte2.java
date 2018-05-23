@@ -48,14 +48,19 @@ public class ActivityParte2 extends AppCompatActivity {
 
 
     private void cargarDatosFirebase(){
+       // dbRef = FirebaseDatabase.getInstance().getReference()
+       //         .child("jugadores");
         dbRef = FirebaseDatabase.getInstance().getReference()
-                .child("jugadores");
-
+                .child("libro");
         valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 lista_jugadores.clear();
-                for (DataSnapshot jugadoresDataSnapshot: dataSnapshot.getChildren()) {
+
+
+
+
+               for (DataSnapshot jugadoresDataSnapshot: dataSnapshot.getChildren()) {
                     cargarListView(jugadoresDataSnapshot);
                 }
             }
@@ -72,7 +77,10 @@ public class ActivityParte2 extends AppCompatActivity {
 
     private void cargarListView (DataSnapshot dataSnapshot){
 
-        lista_jugadores.add(dataSnapshot.getValue(CJugador.class));
+        Libro l = dataSnapshot.getValue(Libro.class);
+
+        l.getAuthor();
+       /* lista_jugadores.add(dataSnapshot.getValue(CJugador.class));
         AdaptadorJugador adapter = new AdaptadorJugador(getApplicationContext(),
                 lista_jugadores);
         lvJugadores.setAdapter(adapter);
@@ -92,7 +100,7 @@ public class ActivityParte2 extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 return false;
             }
-        });
+        });*/
 
     }
 

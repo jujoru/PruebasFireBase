@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -87,9 +88,10 @@ public class ActivityParte4 extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 // Got the download URL for 'users/me/profile.png'
 
+                Glide.with(getApplicationContext()).load(uri.toString()).into(ivCargar);
 
-                ivCargar.setImageURI(null);
-                ivCargar.setImageURI(uri);
+                /*ivCargar.setImageURI(null);*/
+               /* ivCargar.setImageURI(uri);*/
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -104,7 +106,7 @@ public class ActivityParte4 extends AppCompatActivity {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Subiendo...");
             progressDialog.show();
-
+          //  String nombre_imagen = im;
             StorageReference ref = storageRf.child("images/"+ UUID.randomUUID().toString());
 
             ref.putFile(filePath)
